@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SimpleRecoder</string>
+    <string name="use_to_play_record_from_the_beginning">use to play record from the beginning</string>
+    <string name="button_to_record_audio">button to record audio</string>
+    <string name="button_to_play_recorded_audio">button to play recorded audio</string>
+    <string name="button_to_play_audio_in_the_loop">button to play audio in the loop</string>
+    <string name="default_timer">00:00:00</string>
+</resources>
