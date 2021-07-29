@@ -5,4 +5,5 @@
     <string name="button_to_play_recorded_audio">button to play recorded audio</string>
     <string name="button_to_play_audio_in_the_loop">button to play audio in the loop</string>
     <string name="default_timer">00:00:00</string>
+    <string name="currentTime">00:00:00 / </string>
 </resources>
