@@ -8,7 +8,6 @@ import android.media.*
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.view.View
 import android.view.View.OnTouchListener
 import android.widget.ImageButton
 import android.widget.TextView
@@ -80,7 +79,6 @@ class MainActivity : AppCompatActivity(), Timer.OnTimerTickListener {
                 mediaPlayer?.release()
                 mediaPlayer = null
                 playButton.setImageResource(R.drawable.ic_baseline_play_arrow_24)
-
             }
             when (recording) {
                 false -> {
@@ -94,8 +92,6 @@ class MainActivity : AppCompatActivity(), Timer.OnTimerTickListener {
             }
         }
         playButton.setOnClickListener {
-            val currentTimer: TextView = findViewById(R.id.current_time)
-            currentTimer.visibility = View.VISIBLE
 
             if (recording) {
                 stopRecording()
@@ -115,11 +111,17 @@ class MainActivity : AppCompatActivity(), Timer.OnTimerTickListener {
                 recordButton.setImageResource(R.drawable.ic_baseline_record_black)
                 stopRecording()
             }
+            if (startPlaying) {
+                startPlaying = false
+                playButton.setImageResource(R.drawable.ic_baseline_play_arrow_24)
+            }
             playButton.setImageResource(R.drawable.ic_baseline_pause_24)
             startPlaying = true
-            startPlaying(0)
-        }
 
+            mediaPlayer!!.pause()
+            mediaPlayer!!.start()
+            mediaPlayer!!.seekTo(0)
+        }
         loopButton.setOnClickListener {
             if ((mediaPlayer?.isLooping) == true) {
                 loopButton.setImageResource(R.drawable.ic_baseline_repeat_black)
@@ -128,9 +130,7 @@ class MainActivity : AppCompatActivity(), Timer.OnTimerTickListener {
             }
             mediaPlayer?.isLooping = !((mediaPlayer?.isLooping) ?: false)
         }
-
     }
-
 
     override fun onStop() {
         super.onStop()
@@ -139,7 +139,6 @@ class MainActivity : AppCompatActivity(), Timer.OnTimerTickListener {
         mediaPlayer?.release()
         mediaPlayer = null
     }
-
 
     private fun startPlaying(position: Int = 0) {
         val waveFromView: WaveFromView = findViewById(R.id.waveFromView)
@@ -161,16 +160,11 @@ class MainActivity : AppCompatActivity(), Timer.OnTimerTickListener {
             mediaPlayer!!.prepare()
         }
         mediaPlayer?.setOnCompletionListener {
-            timer.stop()
             startPlaying = false
             val playButton: ImageButton = findViewById(R.id.playButton)
             playButton.setImageResource(R.drawable.ic_baseline_play_arrow_24)
-
         }
-
         if (!startPlaying) {
-            val durationTimer: TextView = findViewById(R.id.duration)
-            durationTimer.text = format(mediaPlayer!!.duration)
             startPlaying = true
             val amplituda = Amplituda(this@MainActivity)
             amplituda.fromFile(output)
@@ -178,7 +172,6 @@ class MainActivity : AppCompatActivity(), Timer.OnTimerTickListener {
 
             mediaPlayer!!.start()
             mediaPlayer!!.seekTo(position)
-            timer.start()
 
         } else {
             startPlaying = false
@@ -273,14 +266,9 @@ class MainActivity : AppCompatActivity(), Timer.OnTimerTickListener {
 
         val waveFromView: WaveFromView = findViewById(R.id.waveFromView)
 
-        if (recording) {
             val durationTimer: TextView = findViewById(R.id.duration)
             durationTimer.text = duration
             waveFromView.addAmplitude(mediaRecorder!!.maxAmplitude.toFloat())
-        } else {
-            val currentTimer: TextView = findViewById(R.id.current_time)
-            currentTimer.text = "$duration / "
-        }
     }
 
     private fun format(duration: Int): String {
