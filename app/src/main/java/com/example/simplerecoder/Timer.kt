@@ -2,7 +2,6 @@ package com.example.simplerecoder
 
 import android.os.Looper
 import android.os.Handler
-import android.util.Log
 
 class Timer(listener: OnTimerTickListener) {
 
@@ -12,7 +11,7 @@ class Timer(listener: OnTimerTickListener) {
 private var handler = Handler(Looper.getMainLooper())
     private lateinit var runnable: Runnable
 
-    private var duration = 0L
+    var duration = 0L
     private var delay = 100L
 
     init {
@@ -41,7 +40,6 @@ private var handler = Handler(Looper.getMainLooper())
         val millis = duration % 1000
         val seconds = (duration/1000) % 60
         val minutes = (duration/60000) % 60
-        Log.d("test11", minutes.toString())
         return "%02d:%02d:%02d".format(minutes, seconds, millis/10)
     }
 }

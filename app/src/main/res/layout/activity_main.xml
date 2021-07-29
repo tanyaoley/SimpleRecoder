@@ -6,19 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/duration"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints"
-        android:text="@string/default_timer"
-        android:textSize="50sp"
+        android:layout_marginBottom="20dp"
+        android:gravity="right"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@id/waveFromView"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="20dp">
+        app:layout_constraintRight_toRightOf="parent">
 
-    </TextView>
+        <TextView
+            android:id="@+id/current_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/currentTime"
+            android:textSize="30sp"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_timer"
+            android:textSize="30sp" />
+
+    </LinearLayout>
 
     <com.example.simplerecoder.WaveFromView
         android:id="@+id/waveFromView"
@@ -28,54 +41,54 @@
         app:layout_constraintTop_toTopOf="parent"
 
         />
-<!--    <ImageButton-->
-<!--        android:layout_width="4dp"-->
-<!--        android:layout_height="200dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:srcCompat="@drawable/ic_position"-->
-<!--        android:orientation="horizontal"-->
-<!--        >-->
-    </ImageButton>
-    
+    <!--    <ImageButton-->
+    <!--        android:id="@+id/position"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="180dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:srcCompat="@drawable/ic_position"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        >-->
+    <!--    </ImageButton>-->
+
     <LinearLayout
         android:id="@+id/lin_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
         android:gravity="center"
         android:orientation="horizontal"
-        android:layout_marginBottom="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        >
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageButton
             android:id="@+id/playFromBeginningButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/use_to_play_record_from_the_beginning"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:srcCompat="@drawable/ic_baseline_skip_previous_24"
-            android:contentDescription="@string/use_to_play_record_from_the_beginning" />
+            app:srcCompat="@drawable/ic_baseline_skip_previous_24" />
 
         <ImageButton
             android:id="@+id/recordButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_baseline_record_black"
-            android:contentDescription="@string/button_to_record_audio" />
+            android:contentDescription="@string/button_to_record_audio"
+            app:srcCompat="@drawable/ic_baseline_record_black" />
 
         <ImageButton
             android:id="@+id/playButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_play_arrow_24"
-            android:contentDescription="@string/button_to_play_recorded_audio" />
+            android:contentDescription="@string/button_to_play_recorded_audio"
+            android:src="@drawable/ic_baseline_play_arrow_24" />
 
         <ImageButton
             android:id="@+id/loopButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_baseline_repeat_black"
-            android:contentDescription="@string/button_to_play_audio_in_the_loop" />
+            android:contentDescription="@string/button_to_play_audio_in_the_loop"
+            app:srcCompat="@drawable/ic_baseline_repeat_black" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
