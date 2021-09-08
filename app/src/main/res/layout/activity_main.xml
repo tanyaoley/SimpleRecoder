@@ -28,7 +28,7 @@
         app:layout_constraintTop_toTopOf="parent"
 
         />
-    
+
     <LinearLayout
         android:id="@+id/lin_layout"
         android:layout_width="match_parent"

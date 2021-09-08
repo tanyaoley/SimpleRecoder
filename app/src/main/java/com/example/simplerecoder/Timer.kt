@@ -2,7 +2,6 @@ package com.example.simplerecoder
 
 import android.os.Looper
 import android.os.Handler
-import android.util.Log
 
 class Timer(listener: OnTimerTickListener) {
 
@@ -12,7 +11,7 @@ class Timer(listener: OnTimerTickListener) {
 private var handler = Handler(Looper.getMainLooper())
     private lateinit var runnable: Runnable
 
-    private var duration = 0L
+    var duration = 0L
     private var delay = 100L
 
     init {

@@ -16,21 +16,20 @@ class WaveFromView(context: Context?, attrs: AttributeSet?): View(context,attrs)
     private var spikes = ArrayList<RectF>()
 
     private var radius = 6f
-    private var w = 9f
+    var w = 9f
 
     private var sw = 0f
     private var sh = 400f
-    private var d =6f
+    var d =6f
 
     private var maxSpikes = 0
 
     init {
         paint.color = Color.rgb(244, 81, 30)
-        sw = resources.displayMetrics.heightPixels.toFloat()
-        maxSpikes = (sw / (w+d)).toInt()
+        setDefault()
     }
 
-    fun setDefault(){
+    private fun setDefault(){
         w = 9f
         d = 6f
         sw = resources.displayMetrics.widthPixels .toFloat()
@@ -46,7 +45,7 @@ class WaveFromView(context: Context?, attrs: AttributeSet?): View(context,attrs)
             d /= 2
             maxSpikes = (sw / (w+d)).toInt()
         }
-//        val amps  = amplitudes.takeLast(maxSpikes)
+
         for (i in amplitudes.indices){
             val left = i * (d+w)
             val top = (sh - amplitudes[i])/2
@@ -60,7 +59,7 @@ class WaveFromView(context: Context?, attrs: AttributeSet?): View(context,attrs)
     fun clear()
     {
         setDefault()
-//        val ampls = amplitudes.clone() as ArrayList<*>
+
         amplitudes.clear()
         spikes.clear()
         invalidate()
