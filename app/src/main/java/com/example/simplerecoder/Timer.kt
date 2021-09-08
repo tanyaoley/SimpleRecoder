@@ -41,7 +41,6 @@ private var handler = Handler(Looper.getMainLooper())
         val millis = duration % 1000
         val seconds = (duration/1000) % 60
         val minutes = (duration/60000) % 60
-        Log.d("test11", minutes.toString())
         return "%02d:%02d:%02d".format(minutes, seconds, millis/10)
     }
 }

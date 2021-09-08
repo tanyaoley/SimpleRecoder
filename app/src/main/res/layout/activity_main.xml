@@ -28,15 +28,6 @@
         app:layout_constraintTop_toTopOf="parent"
 
         />
-<!--    <ImageButton-->
-<!--        android:layout_width="4dp"-->
-<!--        android:layout_height="200dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:srcCompat="@drawable/ic_position"-->
-<!--        android:orientation="horizontal"-->
-<!--        >-->
-    </ImageButton>
     
     <LinearLayout
         android:id="@+id/lin_layout"
